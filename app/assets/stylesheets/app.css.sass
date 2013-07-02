@@ -8,7 +8,7 @@
 .tweet
   border: 1px solid #eee
   border-top: 0
-  padding: 10px
+  padding: 6px 10px
   &:last-child
     border-radius: 0 0 3px 3px
   &:first-child
@@ -16,3 +16,8 @@
     border-top: 1px solid #eee
   img
     border-radius: 3px
+    &:not(.profile_image_url)
+      max-width: 300px
+
+.screen_name
+  font-size: 0.8em

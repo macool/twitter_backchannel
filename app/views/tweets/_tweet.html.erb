@@ -1,14 +1,14 @@
 <div class="row-fluid tweet">
   <div class="span1 align_center">
-    <%= image_tag tweet.user.profile_image_url %>
+    <%= image_tag tweet.user.profile_image_url, :class => "profile_image_url" %>
   </div>
   <div class="span11">
     <div>
       <strong><%= tweet.user.name %></strong>
-      @<%= tweet.user.screen_name %>
+      <span class="screen_name">@<%= tweet.user.screen_name %></span>
     </div>
     <div><%= tweet.text %></div>
-    <div>
+    <div class="align_center">
       <% if tweet.entities[:media] and tweet.entities[:media][0][:type] == "photo" %>
         <%= link_to tweet.entities[:media][0][:url] do %>
           <%= image_tag tweet.entities[:media][0][:media_url] %>
