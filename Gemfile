@@ -41,11 +41,12 @@ gem "kaminari"
 gem "exception_notification"
 gem "rspec-rails"
 gem "rb-fsevent"
+gem "twitter"
+
 group :test, :development do
   gem "factory_girl_rails"
   gem "capybara"
   gem "guard-rspec"
-  gem "turn"
   gem "rspec-rails"
 end
 

@@ -1,8 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  before_filter :mini_profiler_if_admin
-
   # exception notifier:
   unless Rails.application.config.consider_all_requests_local
     rescue_from ActiveRecord::RecordNotFound, :with => :render_not_found
@@ -16,10 +14,6 @@ class ApplicationController < ActionController::Base
 
   def routing_error
     render_not_found(nil)
-  end
-
-  def mini_profiler_if_admin
-    Rack::MiniProfiler.authorize_request if ( Rails.env.production? and current_user and current_user.admin? )
   end
   
   protected
