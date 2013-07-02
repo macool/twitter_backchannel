@@ -9,7 +9,7 @@ class CreateTweets < ActiveRecord::Migration
       t.string :in_reply_to_status_id_str
       t.string :in_reply_to_user_id_str
       t.string :in_reply_to_screen_name
-      t.text :user
+      t.integer :user_id
       t.text :geo
       t.text :coordinates
       t.text :place
@@ -23,5 +23,7 @@ class CreateTweets < ActiveRecord::Migration
       t.string :lang
       t.timestamps
     end
+    add_index :tweets, :id_str, unique: true
+    add_index :tweets, :user_id
   end
 end

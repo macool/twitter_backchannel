@@ -5,4 +5,4 @@ twitter:
   access_token: "637192024-qCTlaSioqhmhHlGfRkUyJhot6q9SI8etZlPmdK3a"
   access_token_secret: "ervh9CuhKJPTaaMqXlfpV6miRJyPeZ5dnROO93EM"
 app:
-  save_to_db: YES
+  using_db: YES
