@@ -7,7 +7,18 @@ class TweetsController < ApplicationController
       Tweet.create tweet.attrs
     end
     Rails.logger.debug "\n#{tweets.results.count} tuits nuevos desde #{since_id}"
-    @tweets = Tweet.order("id DESC").limit(20).includes(:user)
+    respond_to do |format|
+      format.html do
+        @tweets = Tweet.order("id DESC").limit(20).includes(:user)
+      end
+      format.js do
+        @tweets = []
+        tweets.results.each do |tweet|
+          @tweets << Tweet.find_by_id_str(tweet.attrs[:id_str])
+        end
+        @tweets.reverse!
+      end
+    end
   end
   
 end

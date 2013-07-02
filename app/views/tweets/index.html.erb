@@ -2,6 +2,14 @@
   <h1><%= APP_CONFIG["app"]["title"] %></h1>
 </div>
 
-<% @tweets.each do |tweet| %>
-  <%= render 'tweet', tweet: tweet %>
+<div class="the_tweets">
+  <% @tweets.each do |tweet| %>
+    <%= render 'tweet', tweet: tweet %>
+  <% end %>
+</div>
+
+
+<%= javascript_tag do %>
+  $(".the_tweets").linkify();
+  App.RefreshBackchannel.init();  
 <% end %>

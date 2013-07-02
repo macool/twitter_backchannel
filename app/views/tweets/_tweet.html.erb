@@ -7,8 +7,13 @@
       <strong><%= tweet.user.name %></strong>
       @<%= tweet.user.screen_name %>
     </div>
-    <div></div>
-    <div></div>
-    <%= tweet.text %>
+    <div><%= tweet.text %></div>
+    <div>
+      <% if tweet.entities[:media] and tweet.entities[:media][0][:type] == "photo" %>
+        <%= link_to tweet.entities[:media][0][:url] do %>
+          <%= image_tag tweet.entities[:media][0][:media_url] %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -1,0 +1,7 @@
+<% @tweets.each do |tweet| %>
+  var $tweet = $("<%= j render 'tweet', tweet: tweet %>");
+  $tweet.hide();
+  $(".the_tweets").prepend($tweet);
+  $tweet.slideDown();
+<% end %>
+$(".the_tweets").linkify();
