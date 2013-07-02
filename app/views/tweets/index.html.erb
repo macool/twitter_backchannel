@@ -1,0 +1,5 @@
+<h1><%= APP_CONFIG["app"]["title"] %></h1>
+
+<% @tweets.each do |tweet| %>
+  <%= render 'tweet', tweet: tweet %>
+<% end %>
