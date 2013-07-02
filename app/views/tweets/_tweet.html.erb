@@ -1,8 +1,14 @@
-<div class="row-fluid">
-  <div class="span4">
-    <%= render 'user', user: tweet.user %>
+<div class="row-fluid tweet">
+  <div class="span1 align_center">
+    <%= image_tag tweet.user.profile_image_url %>
   </div>
-  <div class="span8">
+  <div class="span11">
+    <div>
+      <strong><%= tweet.user.name %></strong>
+      @<%= tweet.user.screen_name %>
+    </div>
+    <div></div>
+    <div></div>
     <%= tweet.text %>
   </div>
 </div>
