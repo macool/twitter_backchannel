@@ -11,6 +11,8 @@ class TweetsController < ApplicationController
         t.update_attributes! tweet.attrs
       end
     end
+  rescue
+  ensure
     render text: ":+1:"
   end
 end
