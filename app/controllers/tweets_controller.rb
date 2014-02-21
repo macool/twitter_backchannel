@@ -1,7 +1,7 @@
 class TweetsController < ApplicationController
 
   def index
-    @tweets = Tweet.order("id DESC").limit(20).includes(:user).reverse
+    @tweets = Tweet.order("id DESC").limit(20).includes(:user)
   end
 
   def refresh
