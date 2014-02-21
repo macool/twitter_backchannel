@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140221075603) do
+ActiveRecord::Schema.define(:version => 20140221083359) do
 
   create_table "tweets", :force => true do |t|
     t.text     "metadata"
