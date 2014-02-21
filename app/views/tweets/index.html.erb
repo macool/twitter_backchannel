@@ -1,7 +1,28 @@
 <div class="align_center">
-  <%= image_tag "/images/uimp_logo.jpeg", :class => "header_logo" %>
+  <h1>#EmprendeFEDES</h1>
+</div>
+<div class="align_center hidden">
+  <%= image_tag "/images/logofedes.jpeg", :class => "header_logo" %>
   <%= image_tag "/images/prendho_logo.jpg", :class => "header_logo" %>
-  <%= image_tag "/images/eoi_logo.jpg", :class => "header_logo" %>
+</div>
+<div class="clear"></div>
+
+<div class="twitter_accounts">
+  <div class="twitter_account">
+    <%= image_tag "https://pbs.twimg.com/profile_images/3008824257/82699e2dfff6611b92697c1d136a7dc9.jpeg" %>
+    <div class="name">Fernando Moncayo Cas</div>
+    <div class="username">@fermoncayo</div>
+  </div>
+  <div class="twitter_account">
+    <%= image_tag "/images/fedes2.png" %>
+    <div class="name">FEDES</div>
+    <div class="username">@fedesfundacion</div>
+  </div>
+  <div class="twitter_account">
+    <%= image_tag "https://pbs.twimg.com/profile_images/3686553952/4a5c56b73c095210e47acc55d0479030.jpeg" %>
+    <div class="name">prendho</div>
+    <div class="username">@prendho</div>
+  </div>
 </div>
 
 <div class="the_tweets">
@@ -10,8 +31,7 @@
   <% end %>
 </div>
 
-
 <%= javascript_tag do %>
-  $(".the_tweets").linkify();
-  App.RefreshBackchannel.init();  
+  $("body").linkify();
+  App.RefreshBackchannel.init();
 <% end %>

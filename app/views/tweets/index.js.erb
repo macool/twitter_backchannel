@@ -1,7 +1,21 @@
-<% @tweets.each do |tweet| %>
-  var $tweet = $("<%= j render 'tweet', tweet: tweet %>");
-  $tweet.hide();
-  $(".the_tweets").prepend($tweet);
-  $tweet.slideDown();
-<% end %>
-$(".the_tweets").linkify();
+(function(){
+  var tweets = [];
+  <% @tweets.each do |tweet| %>
+    tweets.push({
+      id: <%= tweet.id %>,
+      htmlNode: $("<%= j render 'tweet', tweet: tweet %>")
+    });
+  <% end %>
+  var exists,
+      tweet;
+  for (var i=0; i<tweets.length; i++) {
+    tweet = tweets[i];
+    exists = !!document.getElementById("tweet-" + tweet.id);
+    if (!exists) {
+      tweet.htmlNode.hide();
+      $(".the_tweets").prepend(tweet.htmlNode);
+      tweet.htmlNode.slideDown();
+    }
+  }
+  $(".the_tweets").linkify();
+})();
