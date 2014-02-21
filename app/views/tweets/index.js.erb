@@ -11,15 +11,14 @@
       htmlNode: $("<%= j render 'tweet', tweet: tweet %>")
     });
   <% end %>
-  var existingNode, tweet, newHTML;
+  var existingNode, tweet;
   for (i=0; i<tweets.length; i++) {
     tweet = tweets[i];
     window.applyHelpers(tweet.htmlNode);
     existingNode = $("#tweet-" + tweet.id);
     if (existingNode[0]) {
-      newHTML = tweet.htmlNode.html();
-      if (existingNode.html() != newHTML) {
-        existingNode.html(newHTML);
+      if (existingNode.html() != tweet.htmlNode.html()) {
+        existingNode.replaceWith(tweet.htmlNode);
       }
     }
     else {
