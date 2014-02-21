@@ -1,3 +1,3 @@
 window.applyHelpers = ($el = $("body")) ->
   $el.linkify();
-  $el.tooltip();
+  $el.find(".ttip").tooltip();

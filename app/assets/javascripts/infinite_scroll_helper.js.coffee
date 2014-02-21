@@ -8,4 +8,6 @@ window.infiniteScrollHelper =
         finishedMsg: "No hay más tuits"
         msgText: "Cargando.."
         speed: "slow"
-        img: ""
+        finished: ->
+          $("#infscr-loading").remove()
+          window.applyHelpers()
