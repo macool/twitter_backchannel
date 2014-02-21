@@ -1,6 +1,10 @@
 TwitterBackchannel::Application.routes.draw do
 
-  resources :tweets
+  resources :tweets do
+    collection do
+      get :refresh
+    end
+  end
 
   root to: 'tweets#index'
 
