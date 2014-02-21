@@ -19,7 +19,7 @@
     <% end %>
     <div class="align_center">
       <% if tweet.entities[:media] and tweet.entities[:media][0][:type] == "photo" %>
-        <%= link_to tweet.entities[:media][0][:url] do %>
+        <%= link_to tweet.entities[:media][0][:url], target: "_blank" do %>
           <%= image_tag tweet.entities[:media][0][:media_url] %>
         <% end %>
       <% end %>
