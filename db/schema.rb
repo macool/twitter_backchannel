@@ -11,12 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130702163059) do
+ActiveRecord::Schema.define(:version => 20140221075603) do
 
   create_table "tweets", :force => true do |t|
     t.text     "metadata"
     t.string   "id_str"
-    t.string   "text"
     t.string   "source"
     t.boolean  "truncated"
     t.string   "in_reply_to_status_id_str"
@@ -27,19 +26,23 @@ ActiveRecord::Schema.define(:version => 20130702163059) do
     t.text     "coordinates"
     t.text     "place"
     t.text     "contributors"
-    t.text     "retweeted_status"
     t.integer  "retweet_count"
     t.integer  "favorite_count"
+    t.string   "text"
     t.text     "entities"
     t.boolean  "favorited"
     t.boolean  "retweeted"
     t.string   "lang"
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
+    t.datetime "created_at",                                   :null => false
+    t.datetime "updated_at",                                   :null => false
     t.boolean  "possibly_sensitive"
+    t.string   "retweeted_status_id"
+    t.boolean  "hidden",                    :default => false
   end
 
+  add_index "tweets", ["hidden"], :name => "index_tweets_on_hidden"
   add_index "tweets", ["id_str"], :name => "index_tweets_on_id_str", :unique => true
+  add_index "tweets", ["retweeted_status_id"], :name => "index_tweets_on_retweeted_status_id"
   add_index "tweets", ["user_id"], :name => "index_tweets_on_user_id"
 
   create_table "users", :force => true do |t|

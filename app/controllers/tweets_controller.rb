@@ -1,20 +1,16 @@
 class TweetsController < ApplicationController
-
   def index
-    @tweets = Tweet.order("id DESC").limit(20).includes(:user)
+    @tweets = Tweet.not_hidden.includes(:user).no_retweets.page(params[:page]).per(20)
+    @hidden_tweets_ids = Tweet.hidden.limit(50).ids
   end
 
   def refresh
-    since_id = if Tweet.count > 0
-      Tweet.order("id_str DESC").first(select: :id_str).id_str.to_i
-    else
-      1
-    end
-    tweets = Twitter.search(APP_CONFIG["twitter"]["query"], :since_id => since_id)
+    tweets = Twitter.search APP_CONFIG["twitter"]["query"], since_id: Tweet.since_id
     tweets.results.each do |tweet|
-      Tweet.create tweet.attrs
+      Tweet.find_or_initialize_by_id_str(tweet.attrs[:id_str]).tap do |t|
+        t.update_attributes! tweet.attrs
+      end
     end
-    render text: ""
+    render text: ":+1:"
   end
-
 end

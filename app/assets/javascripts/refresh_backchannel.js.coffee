@@ -6,6 +6,7 @@ window.App.RefreshBackchannel =
     clearInterval @id
 
   init: ( interval=10000 ) ->
+    window.infiniteScrollHelper.init()
     @id = setInterval ->
       $.getScript "/"
     , interval

@@ -1,6 +1,6 @@
 #main
   max-width: 700px
-  margin: auto
+  margin: auto auto 3em auto
 
 .align_center
   text-align: center
@@ -9,6 +9,7 @@
   border: 1px solid #eee
   border-top: 0
   padding: 6px 10px
+  position: relative
   &:last-child
     border-radius: 0 0 3px 3px
   &:first-child
@@ -18,6 +19,23 @@
     border-radius: 3px
     &:not(.profile_image_url)
       max-width: 300px
+  .created-at, .retweeters
+    color: #777
+    vertical-align: bottom
+  .created-at
+    font-size: 0.85em
+    position: absolute
+    top: 7px
+    right: 10px
+  .retweeters
+    font-size: 0.9em
+    a:hover
+      text-decoration: none
+    img
+      max-width: 20px
+      max-height: 20px
+      border-radius: 3px
+      margin: 2px 1px
 
 .screen_name
   font-size: 0.8em

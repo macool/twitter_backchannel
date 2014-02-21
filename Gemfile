@@ -44,6 +44,8 @@ gem "rspec-rails"
 gem "rb-fsevent"
 gem "twitter"
 
+gem "pry"
+
 group :test, :development do
   gem "factory_girl_rails"
   gem "capybara"

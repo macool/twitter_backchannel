@@ -1,4 +1,9 @@
 (function(){
+  var tweetIdsToHide = [<%= @hidden_tweets_ids.join "," %>];
+  for (var i=0; i<tweetIdsToHide.length; i++) {
+    $("#tweet-" + tweetIdsToHide[i]).remove();
+  }
+
   var tweets = [];
   <% @tweets.each do |tweet| %>
     tweets.push({
@@ -6,16 +11,21 @@
       htmlNode: $("<%= j render 'tweet', tweet: tweet %>")
     });
   <% end %>
-  var exists,
-      tweet;
-  for (var i=0; i<tweets.length; i++) {
+  var existingNode, tweet, newHTML;
+  for (i=0; i<tweets.length; i++) {
     tweet = tweets[i];
-    exists = !!document.getElementById("tweet-" + tweet.id);
-    if (!exists) {
+    window.applyHelpers(tweet.htmlNode);
+    existingNode = $("#tweet-" + tweet.id);
+    if (existingNode[0]) {
+      newHTML = tweet.htmlNode.html();
+      if (existingNode.html() != newHTML) {
+        existingNode.html(newHTML);
+      }
+    }
+    else {
       tweet.htmlNode.hide();
       $(".the_tweets").prepend(tweet.htmlNode);
       tweet.htmlNode.slideDown();
     }
   }
-  $(".the_tweets").linkify();
 })();

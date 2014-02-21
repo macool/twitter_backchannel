@@ -207,6 +207,7 @@ DEPENDENCIES
   kaminari
   meta_request
   mysql2
+  pry
   rack-mini-profiler
   rails (= 3.2.12)
   rb-fsevent

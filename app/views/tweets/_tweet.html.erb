@@ -7,7 +7,16 @@
       <strong><%= tweet.user.name %></strong>
       <span class="screen_name">@<%= tweet.user.screen_name %></span>
     </div>
+    <div class="created-at">
+      hace <%= time_ago_in_words tweet.created_at %>
+    </div>
     <div><%= tweet.text %></div>
+    <% if tweet.retweeters.any? %>
+      <div class="retweeters">
+        Retuiteado por
+        <%= render partial: "users/retweeters", collection: tweet.retweeters %>
+      </div>
+    <% end %>
     <div class="align_center">
       <% if tweet.entities[:media] and tweet.entities[:media][0][:type] == "photo" %>
         <%= link_to tweet.entities[:media][0][:url] do %>

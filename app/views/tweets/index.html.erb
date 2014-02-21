@@ -26,12 +26,14 @@
 </div>
 
 <div class="the_tweets">
-  <% @tweets.each do |tweet| %>
-    <%= render 'tweet', tweet: tweet %>
-  <% end %>
+  <%= render @tweets %>
+</div>
+
+<div class="align_center">
+  <%= paginate @tweets, remote: true %>
 </div>
 
 <%= javascript_tag do %>
-  $("body").linkify();
+  window.applyHelpers();
   App.RefreshBackchannel.init();
 <% end %>
